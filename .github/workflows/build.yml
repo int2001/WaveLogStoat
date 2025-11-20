@@ -6,7 +6,7 @@ on:
       - 'v*.*.*' # Run only when a new version tag is pushed
   pull_request: # Also run on pull requests for CI
     branches:
-      - main
+      - master
 
 jobs:
   # Job for testing builds on Pull Requests
