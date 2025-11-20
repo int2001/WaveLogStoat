@@ -1,6 +1,12 @@
+# WaveLoaStoat
+<img width="807" height="485" alt="image" src="https://github.com/user-attachments/assets/a6f0bc9f-597c-4f0c-8405-f737f5688991" />
+
 # WaveLog Transport CLI
 
-A lightweight CLI application that receives QSO data from WSJT-X via UDP and forwards it to WaveLog. This is a minimal implementation focused on the core QSO transportation functionality, perfect for 32-bit systems and resource-constrained environments.
+A lightweight CLI application that receives QSO data from any Logbook (which can emit ADIFs via UDP) and forwards it to WaveLog. 
+This is a minimal implementation focused on the core QSO transportation functionality, perfect for 32-bit systems and resource-constrained environments.
+
+Perfect for vintage-computing or small-ressources. 
 
 ## Features
 
