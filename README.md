@@ -1,4 +1,4 @@
-# WaveLoaStoat
+# WaveLogStoat
 <img width="807" height="485" alt="image" src="https://github.com/user-attachments/assets/a6f0bc9f-597c-4f0c-8405-f737f5688991" />
 
 # WaveLog Transport CLI
