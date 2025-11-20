@@ -10,7 +10,7 @@ Perfect for vintage-computing or small-ressources.
 
 ## Features
 
-- **UDP Listener**: Receives WSJT-X QSO data on port 2333
+- **UDP Listener**: Receives Logbook-QSO data on port 2333
 - **Dual Format Support**: Handles both XML and ADIF formats from WSJT-X
 - **Data Normalization**: Automatic power unit conversion and band detection
 - **WaveLog Integration**: Direct HTTP API communication with WaveLog
