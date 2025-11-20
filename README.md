@@ -11,7 +11,7 @@ Perfect for vintage-computing or small-ressources.
 ## Features
 
 - **UDP Listener**: Receives Logbook-QSO data on port 2333
-- **Dual Format Support**: Handles both XML and ADIF formats from WSJT-X
+- **Dual Format Support**: Handles both XML and ADIF formats from Non-ADIF-Conform loggers like N1MM as well as ADIF-Conform ones
 - **Data Normalization**: Automatic power unit conversion and band detection
 - **WaveLog Integration**: Direct HTTP API communication with WaveLog
 - **Lightweight**: Single binary executable, minimal dependencies
@@ -91,15 +91,12 @@ verbose = true
 ./wavelog-transport --test
 ```
 
-### WSJT-X Setup
+### Logger Setup
 
-In WSJT-X, configure the UDP broadcast settings:
+In your logger, configure the UDP broadcast settings:
 
-1. Go to **Settings → Reporting**
-2. Enable **UDP Server**
-3. Set **UDP Server** to `127.0.0.1:2333`
-4. Set **UDP Server format** to **ADIF**
-5. Check **Enable UDP broadcasts**
+1. Set **UDP Server** to `127.0.0.1:2333`
+2. Set **UDP Server format** to **ADIF**
 
 ## Usage Examples
 
@@ -120,10 +117,9 @@ verbose = true
 
 ## Supported QSO Formats
 
-### WSJT-X XML Format
+### N1MM proprietary XML Format (beta beta beta)
 - Automatic detection and parsing
 - Converts USB/LSB to SSB for compatibility
-- Handles all standard WSJT-X fields
 
 ### ADIF Format
 - Standard ADIF field parsing
@@ -184,7 +180,7 @@ WSJT-X --UDP(2333)--> UDP Listener --> Format Parser --> Data Normalizer --> HTT
    - Test with `--test` option
 
 3. **"No QSOs received"**
-   - Verify WSJT-X UDP configuration
+   - Verify your Mainloggers UDP configuration
    - Check firewall settings
    - Ensure verbose logging is enabled
 
@@ -220,5 +216,5 @@ This project is based on the WaveLogGate by DJ7NT, rewritten as a minimal CLI im
 
 For issues related to:
 - **WaveLog API**: Consult your WaveLog documentation
-- **WSJT-X**: Refer to WSJT-X user manual
+- **Your Logger**: Refer to Loggers manual // printed / faxed / $whatever format
 - **This CLI**: Check logs and troubleshooting section
