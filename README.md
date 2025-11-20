@@ -150,7 +150,7 @@ Log format: `WL-TRANSPORT: YYYY-MM-DD HH:MM:SS.microseconds message`
 ## Architecture
 
 ```
-WSJT-X --UDP(2333)--> UDP Listener --> Format Parser --> Data Normalizer --> HTTP Client --> WaveLog API
+Any Logging tool which emits QSOs on LAN via UDP:2333 --UDP(2333)--> UDP Listener --> Format Parser --> Data Normalizer --> HTTP Client --> WaveLog API
 ```
 
 ## System Requirements
