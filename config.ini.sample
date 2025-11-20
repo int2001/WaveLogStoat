@@ -1,0 +1,9 @@
+[wavelog]
+url                = https://your-wavelog-url.com
+api_key            = your-api-key-here
+station_profile_id = 1
+timeout            = 5000
+
+[server]
+port    = 2333
+verbose = true
