@@ -8,6 +8,8 @@ This is a minimal implementation focused on the core QSO transportation function
 
 Perfect for vintage-computing or small-ressources. 
 
+For CAT-Only see the other "animal" called ["WaveLogGoat"](https://github.com/johnsonm/WaveLogGoat)
+
 ## Features
 
 - **UDP Listener**: Receives Logbook-QSO data on port 2333
