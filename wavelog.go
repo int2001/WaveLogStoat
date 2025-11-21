@@ -35,7 +35,7 @@ func sendToWaveLog(adifString string, qso QSO) error {
 
 	// Set headers
 	req.Header.Set("Content-Type", "application/json")
-	req.Header.Set("User-Agent", "WL-Transport-v1.0")
+	req.Header.Set("User-Agent", AppName+"-"+AppVersion)
 
 	// Create HTTP client with timeout
 	timeout := time.Duration(config.WaveLog.Timeout) * time.Millisecond
@@ -112,7 +112,7 @@ func testWaveLogConnection() error {
 
 	// Set headers
 	req.Header.Set("Content-Type", "application/json")
-	req.Header.Set("User-Agent", "WL-Transport-v1.0-Test")
+	req.Header.Set("User-Agent", AppName+"-"+AppVersion+"-Test")
 
 	// Create HTTP client with timeout
 	timeout := time.Duration(config.WaveLog.Timeout) * time.Millisecond

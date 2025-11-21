@@ -103,6 +103,11 @@ type QSO struct {
 	Fail             interface{}
 }
 
+const (
+	AppName    = "WavelogStoat"
+	AppVersion = "0.0.2"
+)
+
 var (
 	config   Config
 	verbose  bool
