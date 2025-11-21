@@ -31,19 +31,19 @@ Perfect for vintage-computing or small-ressources.
 
 ```bash
 # Clone or copy the source code
-cd wavelog-transport-cli
+cd wavelogstoat-cli
 
 # Download dependencies
 go mod tidy
 
 # Build for your current platform
-go build -o wavelog-transport
+go build -o wavelogstoat
 
 # Build for 32-bit Windows
-GOOS=windows GOARCH=386 go build -o wavelog-transport.exe
+GOOS=windows GOARCH=386 go build -o wavelogstoat.exe
 
 # Build for 64-bit Linux
-GOOS=linux GOARCH=amd64 go build -o wavelog-transport-linux
+GOOS=linux GOARCH=amd64 go build -o wavelogstoat-linux
 
 # Build for other platforms as needed
 ```
@@ -80,16 +80,16 @@ verbose = true
 
 ```bash
 # Run with default config
-./wavelog-transport
+./wavelogstoat
 
 # Run with custom config file
-./wavelog-transport /path/to/config.ini
+./wavelogstoat /path/to/config.ini
 
 # Show help
-./wavelog-transport --help
+./wavelogstoat --help
 
 # Test WaveLog connection
-./wavelog-transport --test
+./wavelogstoat --test
 ```
 
 ### Logger Setup
@@ -111,13 +111,13 @@ In your logger, configure the UDP settings:
 
 ```bash
 # Basic usage
-./wavelog-transport
+./wavelogstoat
 
 # Test connection to WaveLog
-./wavelog-transport --test
+./wavelogstoat --test
 
 # Use custom config file
-./wavelog-transport --config /etc/wavelog.ini
+./wavelogstoat --config /etc/wavelog.ini
 
 # Verbose mode (set in config.ini)
 [server]
@@ -145,7 +145,7 @@ verbose = true
 The application creates two log outputs:
 
 1. **Console**: Real-time status messages
-2. **File**: `wavelog-transport.log` with detailed logging
+2. **File**: `wavelogstoat.log` with detailed logging
 
 Log format: `WL-TRANSPORT: YYYY-MM-DD HH:MM:SS.microseconds message`
 
