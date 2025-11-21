@@ -11,6 +11,7 @@ Perfect for vintage-computing or small-ressources.
 ## Features
 
 - **UDP Listener**: Receives Logbook-QSO data on port 2333
+- **Broadcast Support**: Automatically receives UDP broadcast messages from any device on the LAN
 - **Dual Format Support**: Handles both XML and ADIF formats from Non-ADIF-Conform loggers like N1MM as well as ADIF-Conform ones
 - **Data Normalization**: Automatic power unit conversion and band detection
 - **WaveLog Integration**: Direct HTTP API communication with WaveLog
@@ -93,10 +94,18 @@ verbose = true
 
 ### Logger Setup
 
-In your logger, configure the UDP broadcast settings:
+In your logger, configure the UDP settings:
 
+**For local logging (single computer):**
 1. Set **UDP Server** to `127.0.0.1:2333`
 2. Set **UDP Server format** to **ADIF**
+
+**For LAN broadcasting (multiple computers):**
+1. Set **UDP Server** to your network's broadcast address (e.g., `192.168.1.255:2333`)
+2. Set **UDP Server format** to **ADIF**
+3. The WaveLogStoat will automatically receive broadcast messages from any device on the LAN
+
+**Note:** The application automatically listens on all network interfaces (0.0.0.0:2333), so it can receive both unicast and broadcast UDP packets without additional configuration.
 
 ## Usage Examples
 
@@ -150,8 +159,13 @@ Log format: `WL-TRANSPORT: YYYY-MM-DD HH:MM:SS.microseconds message`
 ## Architecture
 
 ```
-Any Logging tool which emits QSOs on LAN via UDP:2333 --UDP(2333)--> UDP Listener --> Format Parser --> Data Normalizer --> HTTP Client --> WaveLog API
+Any Logging tool which emits QSOs via UDP:2333 --UDP(Unicast/Broadcast)--> UDP Listener (0.0.0.0:2333) --> Format Parser --> Data Normalizer --> HTTP Client --> WaveLog API
 ```
+
+**UDP Communication:**
+- **Unicast**: Direct messages to specific IP addresses (e.g., `127.0.0.1:2333`)
+- **Broadcast**: Messages sent to network broadcast address (e.g., `192.168.1.255:2333`)
+- **Supported**: Both unicast and broadcast are handled automatically without configuration
 
 ## System Requirements
 
