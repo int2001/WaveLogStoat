@@ -117,7 +117,7 @@ var (
 
 func init() {
 	// Initialize logging
-	logFile, err := os.OpenFile("wavelog-transport.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
+	logFile, err := os.OpenFile("wavelog-stoat.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
 	if err != nil {
 		log.Fatalf("Failed to open log file: %v", err)
 	}
@@ -160,7 +160,7 @@ func main() {
 		return
 	}
 
-	logger.Printf("Starting WaveLog Transport CLI on port %d", config.Server.Port)
+	logger.Printf("Starting WaveLog Stoat CLI on port %d", config.Server.Port)
 
 	// Start UDP server
 	if err := startUDPServer(); err != nil {
@@ -169,11 +169,11 @@ func main() {
 }
 
 func printUsage() {
-	fmt.Println("WaveLog Transport CLI - Lightweight QSO transport from WSJT-X to WaveLog")
+	fmt.Println("WaveLog Stoat CLI - Lightweight QSO transport from WSJT-X to WaveLog")
 	fmt.Println("")
 	fmt.Println("Usage:")
-	fmt.Println("  wavelog-transport [options] [config.ini]")
-	fmt.Println("  wavelog-transport --help")
+	fmt.Println("  wavelog-stoat [options] [config.ini]")
+	fmt.Println("  wavelog-stoat --help")
 	fmt.Println("")
 	fmt.Println("Options:")
 	fmt.Println("  -h, --help           Show this help message")

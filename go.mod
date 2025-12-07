@@ -1,4 +1,4 @@
-module wavelog-transport
+module wavelog-stoat
 
 go 1.19
 
