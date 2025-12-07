@@ -3,7 +3,7 @@
 
 version: 2
 
-project_name: wavelogstoat
+project_name: wavelog-stoat
 
 before:
   hooks:
