@@ -34,11 +34,45 @@ func parseXMLMessage(message string) (QSO, error) {
 		return QSO{}, fmt.Errorf("XML parsing failed: %v", err)
 	}
 
-	// Parse timestamp
-	timestamp, err := time.Parse("2006-01-02T15:04:05", contactInfo.Timestamp)
-	if err != nil {
-		return QSO{}, fmt.Errorf("timestamp parsing failed: %v", err)
+	// Parse timestamp - try multiple formats for N1MM, DXLog, and WSJT-X compatibility
+	var timestamp time.Time
+	var err error
+
+	// Try formats in order of likelihood:
+	// 1. N1MM format: "2006-01-02 15:04:05" (space separator, no timezone)
+	timestamp, err = time.Parse("2006-01-02 15:04:05", contactInfo.Timestamp)
+	if err == nil {
+		goto timestampParsed
 	}
+
+	// 2. DXLog format with milliseconds and UTC: "2006-01-02T15:04:05.000Z"
+	timestamp, err = time.Parse("2006-01-02T15:04:05.000Z", contactInfo.Timestamp)
+	if err == nil {
+		goto timestampParsed
+	}
+
+	// 3. DXLog format with UTC but no milliseconds: "2006-01-02T15:04:05Z"
+	timestamp, err = time.Parse("2006-01-02T15:04:05Z", contactInfo.Timestamp)
+	if err == nil {
+		goto timestampParsed
+	}
+
+	// 4. WSJT-X/ISO format: "2006-01-02T15:04:05" (T separator, no timezone)
+	timestamp, err = time.Parse("2006-01-02T15:04:05", contactInfo.Timestamp)
+	if err == nil {
+		goto timestampParsed
+	}
+
+	// 5. Custom DXLog format without leading zeros in milliseconds: "2006-01-02T15:04:05.Z"
+	timestamp, err = time.Parse("2006-01-02T15:04:05.Z", contactInfo.Timestamp)
+	if err == nil {
+		goto timestampParsed
+	}
+
+	// If all formats fail, return error
+	return QSO{}, fmt.Errorf("timestamp parsing failed for format '%s': %v", contactInfo.Timestamp, err)
+
+timestampParsed:
 
 	// Convert mode for TCADIF compatibility
 	mode := contactInfo.Mode
