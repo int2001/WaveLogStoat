@@ -87,11 +87,18 @@ timestampParsed:
 	}
 	freqMHz := txFreq / 100000
 
-	rxFreq, err := strconv.ParseFloat(contactInfo.RxFreq, 64)
-	if err != nil {
-		return QSO{}, fmt.Errorf("RX frequency parsing failed: %v", err)
+	var freqRXMHz float64
+	// If rxfreq is provided, use it; otherwise use txfreq (for non-split operations)
+	if contactInfo.RxFreq != "" {
+		rxFreq, err := strconv.ParseFloat(contactInfo.RxFreq, 64)
+		if err != nil {
+			return QSO{}, fmt.Errorf("RX frequency parsing failed: %v", err)
+		}
+		freqRXMHz = rxFreq / 100000
+	} else {
+		// Use txfreq as rxfreq when rxfreq is not provided
+		freqRXMHz = freqMHz
 	}
-	freqRXMHz := rxFreq / 100000
 
 	qso := QSO{
 		CALL:             contactInfo.Call,
